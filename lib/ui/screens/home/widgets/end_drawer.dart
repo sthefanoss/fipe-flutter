@@ -45,7 +45,7 @@ class EndDrawer extends StatelessWidget {
                 .map<Widget>((String pageName) => Padding(
                       padding: _textPadding,
                       child: Text(pageName,
-                          style: R.textThemes.currentRoute),
+                          style: R.textThemes.otherRoute),
                     ))
                 .toList()
           ],
