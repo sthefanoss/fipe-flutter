@@ -32,13 +32,10 @@ class TextSelectorInput extends StatelessWidget {
             child: TypeAheadField(
               textFieldConfiguration: TextFieldConfiguration(
                 controller: controller,
+                style: R.textThemes.input,
                 decoration: InputDecoration.collapsed(
                   hintText: hintText,
-                  hintStyle: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14,
-                    color: Color(0xFF595959),
-                  ),
+                  hintStyle: R.textThemes.inputHint,
                 ),
               ),
               suggestionsCallback: (pattern) async {

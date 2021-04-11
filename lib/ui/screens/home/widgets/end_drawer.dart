@@ -7,16 +7,6 @@ import '../../../widgets/custom_app_bar.dart';
 import 'mobcar_copyright_message.dart';
 import 'menu_button.dart';
 
-const _currentRouteTextStyle = TextStyle(
-  color: Color(0xFF00ADEE),
-  fontWeight: FontWeight.w700,
-  fontSize: 18,
-);
-const _otherRouteTextStyle = TextStyle(
-  color: Color(0xFFFAFAFA),
-  fontWeight: FontWeight.w700,
-  fontSize: 18,
-);
 const _textPadding = EdgeInsets.symmetric(
   vertical: 8,
   horizontal: 16,
@@ -48,13 +38,14 @@ class EndDrawer extends StatelessWidget {
               padding: _textPadding,
               child: Text(
                 'Home Page',
-                style: _currentRouteTextStyle,
+                style: R.textThemes.currentRoute,
               ),
             ),
             ...List<String>.generate(5, (index) => 'Other page ${index + 1}')
                 .map<Widget>((String pageName) => Padding(
                       padding: _textPadding,
-                      child: Text(pageName, style: _otherRouteTextStyle),
+                      child: Text(pageName,
+                          style: R.textThemes.currentRoute),
                     ))
                 .toList()
           ],

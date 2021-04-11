@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../resources/resources.dart';
 import '../../../../data/models/car_entry.dart';
 import '../../../widgets/car_image.dart';
 
@@ -43,31 +44,20 @@ class CarTile extends StatelessWidget {
             children: [
               Text(
                 '${carEntry.brand} - ${carEntry.model}',
-                style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w700),
+                style: R.textThemes.carTileTitle,
                 overflow: TextOverflow.ellipsis,
               ),
               SizedBox(height: 2),
               Text(
                 carEntry.yearModel,
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Color(0xFF595959),
-                  fontWeight: FontWeight.w400,
-                ),
+                style: R.textThemes.carTileSubtitle,
               ),
               SizedBox(height: 2),
               GestureDetector(
                 onTap: () => actions[CarTileAction.View]?.call(),
                 child: Text(
                   'View More',
-                  style: TextStyle(
-                    fontSize: 10,
-                    color: Color(0xFF00ADEE),
-                    fontWeight: FontWeight.w300,
-                  ),
+                  style: R.textThemes.carTileButton,
                 ),
               ),
             ],

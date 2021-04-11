@@ -13,10 +13,7 @@ class MobcarCopyrightMessage extends StatelessWidget {
         SizedBox(width: 13.5),
         Text(
           '2020. All rights reserved to Mobcar.',
-          style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w400,
-              color: Color(0xFF00ADEE)),
+          style: R.textThemes.copyright,
         )
       ],
     );

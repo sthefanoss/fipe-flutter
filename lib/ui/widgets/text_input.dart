@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../resources/resources.dart';
+
 class TextInput extends StatelessWidget {
   const TextInput({
     this.hintText,
@@ -20,18 +22,10 @@ class TextInput extends StatelessWidget {
           borderRadius: BorderRadius.circular(4)),
       child: TextField(
         controller: controller,
-        style: TextStyle(
-          fontWeight: FontWeight.w400,
-          fontSize: 14,
-          color: Colors.black,
-        ),
+        style: R.textThemes.input,
         decoration: InputDecoration.collapsed(
           hintText: hintText,
-          hintStyle: TextStyle(
-            fontWeight: FontWeight.w400,
-            fontSize: 14,
-            color: Color(0xFF595959),
-          ),
+          hintStyle: R.textThemes.inputHint,
         ),
       ),
     );

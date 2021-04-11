@@ -53,11 +53,7 @@ class HomeScreen extends StatelessWidget {
                     alignment: Alignment.bottomLeft,
                     child: Text(
                       'Title 1',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: R.textThemes.title1,
                     ),
                   ),
                 ),
@@ -68,11 +64,7 @@ class HomeScreen extends StatelessWidget {
                       children: [
                         Text(
                           'Title 2',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.black,
-                            fontWeight: FontWeight.normal,
-                          ),
+                          style: R.textThemes.title2,
                         ),
                         Spacer(),
                         ColouredButton(

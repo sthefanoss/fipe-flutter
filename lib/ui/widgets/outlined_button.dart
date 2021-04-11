@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../resources/resources.dart';
+
 class OutlinedButton extends StatelessWidget {
   const OutlinedButton({
     this.message,
@@ -29,11 +31,7 @@ class OutlinedButton extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           child: Text(
             message,
-            style: TextStyle(
-              color: color,
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-            ),
+            style: R.textThemes.button.copyWith(color: color),
           ),
         ),
       ),

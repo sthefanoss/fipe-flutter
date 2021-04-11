@@ -66,11 +66,7 @@ class _CarEditorModalState extends State<CarEditorModal> {
                       SizedBox(width: 9.5),
                       Text(
                         'Title',
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style: R.textThemes.title1,
                       ),
                       Spacer(),
                       MenuButton(

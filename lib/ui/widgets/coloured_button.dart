@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../resources/resources.dart';
+
 class ColouredButton extends StatelessWidget {
   const ColouredButton({
     this.message,
@@ -25,11 +27,7 @@ class ColouredButton extends StatelessWidget {
           child: Text(
             message,
             textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-            ),
+            style: R.textThemes.button,
           ),
         ),
       ),
