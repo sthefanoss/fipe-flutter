@@ -59,12 +59,15 @@ class CarTile extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 2),
-              Text(
-                'View More',
-                style: TextStyle(
-                  fontSize: 10,
-                  color: Color(0xFF00ADEE),
-                  fontWeight: FontWeight.w300,
+              GestureDetector(
+                onTap: () => actions[CarTileAction.View]?.call(),
+                child: Text(
+                  'View More',
+                  style: TextStyle(
+                    fontSize: 10,
+                    color: Color(0xFF00ADEE),
+                    fontWeight: FontWeight.w300,
+                  ),
                 ),
               ),
             ],
