@@ -1,26 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../resources/resources.dart';
 
-class MobCarLogo extends StatelessWidget {
-  MobCarLogo({
+class CarImage extends StatelessWidget {
+  const CarImage({
     this.width,
     this.height,
-    this.color,
+    this.fit,
   });
 
   final double width;
   final double height;
-  final Color color;
+  final BoxFit fit;
 
   @override
   Widget build(BuildContext context) {
-    return SvgPicture.asset(
-      R.images.svg.logo,
+    return Image.asset(
+      R.images.jpg.carExample,
       width: width,
       height: height,
-      color: color,
+      fit: fit,
     );
   }
 }
