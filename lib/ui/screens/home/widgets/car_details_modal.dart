@@ -2,15 +2,28 @@ import 'package:flutter/material.dart' hide OutlinedButton;
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-import '../../../../data/models/car_brand.dart';
+import '../../../../data/models/car_entry.dart';
 import '../../../widgets/coloured_button.dart';
-import '../../../widgets/outlined_button.dart';
 import '../../../resources/resources.dart';
-import '../../../widgets/text_selector_input.dart';
-import '../../../widgets/text_input.dart';
+import '../home_screen_controller.dart';
 import 'menu_button.dart';
 
-class CarDetailsModal extends StatelessWidget {
+class CarDetailsModal extends StatefulWidget {
+  @override
+  _CarDetailsModalState createState() => _CarDetailsModalState();
+}
+
+class _CarDetailsModalState extends State<CarDetailsModal> {
+  final _screenController = Get.find<HomeScreenController>();
+  CarEntry _carEntry;
+
+  @override
+  void initState() {
+    final index = Get.arguments;
+    _carEntry = _screenController.entries[index];
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -60,15 +73,15 @@ class CarDetailsModal extends StatelessWidget {
                 SizedBox(height: 16),
                 Row(
                   children: [
-                    Expanded(child: Text('foo')),
-                    Expanded(child: Text('foo')),
+                    Expanded(child: Text(_carEntry.brand)),
+                    Expanded(child: Text(_carEntry.yearModel)),
                   ],
                 ),
                 SizedBox(height: 13),
                 Row(
                   children: [
-                    Expanded(child: Text('foo')),
-                    Expanded(child: Text('foo')),
+                    Expanded(child: Text(_carEntry.model)),
+                    Expanded(child: Text(_carEntry.price)),
                   ],
                 ),
                 SizedBox(height: 24),
