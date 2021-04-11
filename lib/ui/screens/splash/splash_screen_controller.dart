@@ -14,20 +14,7 @@ class SplashScreenController extends GetxController {
   }
 
   Future<void> _navigateToHomeScreenWithDelay(Duration delay) async {
-    final initialTime = DateTime.now();
-    await _initializeDatabase();
-    final timeDifference = DateTime.now().difference(initialTime);
-
-    if (timeDifference > delay) {
-      Get.offAllNamed(RouteNames.home);
-      return;
-    }
-
-    await Future.delayed(timeDifference);
+    await Future.delayed(delay);
     Get.offAllNamed(RouteNames.home);
-  }
-
-  Future<void> _initializeDatabase() async {
-    //TODO implement database initialization
   }
 }
