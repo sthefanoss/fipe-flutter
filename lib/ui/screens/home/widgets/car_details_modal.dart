@@ -6,6 +6,7 @@ import '../../../../data/models/car_entry.dart';
 import '../../../widgets/coloured_button.dart';
 import '../../../resources/resources.dart';
 import '../home_screen_controller.dart';
+import 'car_image_with_score.dart';
 import 'menu_button.dart';
 
 class CarDetailsModal extends StatefulWidget {
@@ -61,17 +62,7 @@ class _CarDetailsModalState extends State<CarDetailsModal> {
                     ],
                   ),
                   SizedBox(height: 16),
-                  ClipRRect(
-                    child: Image.asset(
-                      R.images.jpg.carExample,
-                      height: 120,
-                      width: double.infinity,
-                      fit: BoxFit.cover,
-                      alignment: Alignment.center,
-                    ),
-                    clipBehavior: Clip.antiAlias,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
+                  CarImageWithScore(),
                   SizedBox(height: 16),
                   Row(
                     children: [

@@ -9,6 +9,7 @@ import '../../../resources/resources.dart';
 import '../../../widgets/text_selector_input.dart';
 import '../../../widgets/text_input.dart';
 import '../home_screen_controller.dart';
+import 'car_image_with_score.dart';
 import 'menu_button.dart';
 
 class CarEditorModal extends StatefulWidget {
@@ -77,17 +78,7 @@ class _CarEditorModalState extends State<CarEditorModal> {
                     ],
                   ),
                   SizedBox(height: 16),
-                  ClipRRect(
-                    child: Image.asset(
-                      R.images.jpg.carExample,
-                      height: 120,
-                      width: double.infinity,
-                      fit: BoxFit.cover,
-                      alignment: Alignment.center,
-                    ),
-                    clipBehavior: Clip.antiAlias,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
+                  CarImageWithScore(),
                   SizedBox(height: 13),
                   TextSelectorInput(
                     hintText: 'Brand',
