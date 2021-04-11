@@ -18,6 +18,8 @@ class HomeScreenController extends GetxController {
   final selectedCarModel = Rx<CarModel>(null);
   final selectedCarYearModel = Rx<CarYearModel>(null);
 
+  RxList<CarEntry> get entries => _carEntriesService.entries;
+
   @override
   void onInit() {
     super.onInit();
