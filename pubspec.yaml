@@ -26,3 +26,8 @@ flutter:
   assets:
     - assets/jpg/
     - assets/svg/
+
+  fonts:
+    - family: Helvetica
+      fonts:
+        - asset: assets/fonts/Helvetica.ttf

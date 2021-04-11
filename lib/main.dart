@@ -13,6 +13,7 @@ class FipeFlutterApp extends StatelessWidget {
       title: 'FipeFlutter',
       getPages: routes,
       initialBinding: InitialBindings(),
+      theme: ThemeData(fontFamily: 'Helvetica'),
     );
   }
 }
