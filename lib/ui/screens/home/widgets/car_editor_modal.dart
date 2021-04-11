@@ -2,7 +2,6 @@ import 'package:flutter/material.dart' hide OutlinedButton;
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-import '../../../../data/models/car_brand.dart';
 import '../../../../data/models/car_entry.dart';
 import '../../../widgets/coloured_button.dart';
 import '../../../widgets/outlined_button.dart';
@@ -23,9 +22,22 @@ class _CarEditorModalState extends State<CarEditorModal> {
   final _modelController = TextEditingController(text: '');
   final _yearModelController = TextEditingController(text: '');
   final _priceController = TextEditingController(text: '');
+  bool _isEditing;
+  int _index;
 
   @override
   void initState() {
+    _index = Get.arguments;
+    _isEditing = _index != null;
+
+    if (_isEditing) {
+      final _carEntry = _screenController.entries[_index];
+      _brandTextController.text = _carEntry.brand;
+      _modelController.text = _carEntry.model;
+      _yearModelController.text = _carEntry.yearModel;
+      _priceController.text = _carEntry.price;
+    }
+
     super.initState();
   }
 
@@ -131,14 +143,20 @@ class _CarEditorModalState extends State<CarEditorModal> {
                     SizedBox(width: 8),
                     ColouredButton(
                       onClick: () {
-                        _screenController.saveEntry(
-                          CarEntry(
-                            brand: _brandTextController.text,
-                            model: _modelController.text,
-                            yearModel: _yearModelController.text,
-                            price: _priceController.text,
-                          ),
+                        final formData = CarEntry(
+                          brand: _brandTextController.text,
+                          model: _modelController.text,
+                          yearModel: _yearModelController.text,
+                          price: _priceController.text,
                         );
+
+                        if (_isEditing) {
+                          _screenController.editEntry(_index, formData);
+                          Get.back();
+                          return;
+                        }
+
+                        _screenController.saveEntry(formData);
                         Get.back();
                       },
                       message: 'Save',
