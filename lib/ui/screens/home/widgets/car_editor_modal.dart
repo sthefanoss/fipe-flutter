@@ -25,6 +25,7 @@ class _CarEditorModalState extends State<CarEditorModal> {
   final _priceController = TextEditingController(text: '');
   bool _isEditing;
   int _index;
+  int _entryId;
 
   @override
   void initState() {
@@ -37,6 +38,7 @@ class _CarEditorModalState extends State<CarEditorModal> {
       _modelController.text = _carEntry.model;
       _yearModelController.text = _carEntry.yearModel;
       _priceController.text = _carEntry.price;
+      _entryId = _carEntry.id;
     }
 
     super.initState();
@@ -137,6 +139,8 @@ class _CarEditorModalState extends State<CarEditorModal> {
                       ColouredButton(
                         onClick: () {
                           final formData = CarEntry(
+                            id: _entryId ??
+                                DateTime.now().millisecondsSinceEpoch,
                             brand: _brandTextController.text,
                             model: _modelController.text,
                             yearModel: _yearModelController.text,
