@@ -2,7 +2,6 @@ import 'package:flutter/material.dart' hide OutlinedButton;
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-import '../../../../data/mock/car_brands.dart';
 import '../../../../data/models/car_brand.dart';
 import '../../../widgets/coloured_button.dart';
 import '../../../widgets/outlined_button.dart';

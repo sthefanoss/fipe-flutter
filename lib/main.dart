@@ -12,6 +12,7 @@ class FipeFlutterApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'FipeFlutter',
       getPages: routes,
+      initialBinding: InitialBindings(),
     );
   }
 }

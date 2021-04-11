@@ -76,6 +76,7 @@ class HomeScreen extends StatelessWidget {
         height: 60,
         child: MobcarCopyrightMessage(),
       ),
+      resizeToAvoidBottomInset: false,
     );
   }
 }

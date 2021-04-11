@@ -2,13 +2,14 @@ import 'package:flutter/material.dart' hide OutlinedButton;
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-import '../../../../data/mock/car_brands.dart';
 import '../../../../data/models/car_brand.dart';
+import '../../../../data/models/car_entry.dart';
 import '../../../widgets/coloured_button.dart';
 import '../../../widgets/outlined_button.dart';
 import '../../../resources/resources.dart';
 import '../../../widgets/text_selector_input.dart';
 import '../../../widgets/text_input.dart';
+import '../home_screen_controller.dart';
 import 'menu_button.dart';
 
 class CarEditorModal extends StatefulWidget {
@@ -17,13 +18,14 @@ class CarEditorModal extends StatefulWidget {
 }
 
 class _CarEditorModalState extends State<CarEditorModal> {
-  List<CarBrand> _brands;
+  final _screenController = Get.find<HomeScreenController>();
   final _brandTextController = TextEditingController(text: '');
+  final _modelController = TextEditingController(text: '');
+  final _yearModelController = TextEditingController(text: '');
+  final _priceController = TextEditingController(text: '');
 
   @override
   void initState() {
-    _brands =
-        carBrands.map<CarBrand>((json) => CarBrand.fromJson(json)).toList();
     super.initState();
   }
 
@@ -76,20 +78,48 @@ class _CarEditorModalState extends State<CarEditorModal> {
                 TextSelectorInput(
                   hintText: 'Brand',
                   controller: _brandTextController,
-                  suggestions:
-                      _brands.map<String>((brand) => brand?.name).toList(),
-                  onSuggestionSelected: (value) {
+                  onSuggestionSelected: (String value) {
                     _brandTextController.text = value;
+                    _screenController.selectCarBrand(value);
+                  },
+                  suggestionsCallback: () async {
+                    await _screenController.fetchCarBrands();
+                    return _screenController.carBrands.keys.toList();
                   },
                 ),
                 SizedBox(height: 13),
-                TextSelectorInput(hintText: 'Model'),
-                SizedBox(height: 13),
                 TextSelectorInput(
-                  hintText: 'Model Year',
+                  hintText: 'Model',
+                  controller: _modelController,
+                  onSuggestionSelected: (String value) {
+                    _modelController.text = value;
+                    _screenController.selectCarModel(value);
+                  },
+                  suggestionsCallback: () async {
+                    await _screenController.fetchCarModels();
+                    return _screenController.carModels.keys.toList();
+                  },
                 ),
                 SizedBox(height: 13),
-                TextInput(hintText: 'Value (R\$)'),
+                TextSelectorInput(
+                  hintText: 'Year Model',
+                  controller: _yearModelController,
+                  onSuggestionSelected: (String value) async {
+                    _yearModelController.text = value;
+                    _screenController.selectCarYearModel(value);
+                    _priceController.text =
+                        await _screenController.fetchCarFullInformation();
+                  },
+                  suggestionsCallback: () async {
+                    await _screenController.fetchCarYearModels();
+                    return _screenController.carYearModels.keys.toList();
+                  },
+                ),
+                SizedBox(height: 13),
+                TextInput(
+                  hintText: 'Value (R\$)',
+                  controller: _priceController,
+                ),
                 SizedBox(height: 24),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -100,7 +130,17 @@ class _CarEditorModalState extends State<CarEditorModal> {
                     ),
                     SizedBox(width: 8),
                     ColouredButton(
-                      onClick: () {},
+                      onClick: () {
+                        _screenController.saveEntry(
+                          CarEntry(
+                            brand: _brandTextController.text,
+                            model: _modelController.text,
+                            yearModel: _yearModelController.text,
+                            price: _priceController.text,
+                          ),
+                        );
+                        Get.back();
+                      },
                       message: 'Save',
                     ),
                   ],
