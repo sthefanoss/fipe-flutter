@@ -19,7 +19,6 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       key: _scaffoldKey,
       endDrawer: EndDrawer(),
-      backgroundColor: Color(0xFFE5E5E5),
       appBar: CustomAppBar(
         preferredSize: Size.fromHeight(60),
         leading: MobCarLogo(),
@@ -28,48 +27,70 @@ class HomeScreen extends StatelessWidget {
           onClick: () => _scaffoldKey.currentState.openEndDrawer(),
         ),
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Container(
-              height: 35,
-              alignment: Alignment.bottomLeft,
-              child: Text(
-                'Title 1',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
+      body: Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+              Colors.black,
+              Color(0xFF262626),
+              Color(0xFF262626),
+              Colors.black,
+            ])),
+        alignment: Alignment.center,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(4),
+          child: Container(
+            color: Color(0xFFE5E5E5),
+            constraints: BoxConstraints(maxWidth: 686),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Container(
+                    height: 35,
+                    alignment: Alignment.bottomLeft,
+                    child: Text(
+                      'Title 1',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                 ),
-              ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          'Title 2',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                        Spacer(),
+                        ColouredButton(
+                          message: 'Add new',
+                          color: Colors.black,
+                          onClick: () => Get.dialog(
+                            CarEditorModal(),
+                            barrierDismissible: false,
+                          ),
+                        )
+                      ]),
+                ),
+                SizedBox(height: 8),
+                Flexible(child: CarListView()),
+              ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
-              Text(
-                'Title 2',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.black,
-                  fontWeight: FontWeight.normal,
-                ),
-              ),
-              Spacer(),
-              ColouredButton(
-                message: 'Add new',
-                color: Colors.black,
-                onClick: () => Get.dialog(
-                  CarEditorModal(),
-                  barrierDismissible: false,
-                ),
-              )
-            ]),
-          ),
-          SizedBox(height: 8),
-          Flexible(child: CarListView()),
-        ],
+        ),
       ),
       bottomSheet: Container(
         color: Colors.black,
