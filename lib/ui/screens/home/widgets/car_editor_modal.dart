@@ -72,7 +72,7 @@ class _CarEditorModalState extends State<CarEditorModal> {
                   clipBehavior: Clip.antiAlias,
                   borderRadius: BorderRadius.circular(12),
                 ),
-                SizedBox(height: 16),
+                SizedBox(height: 13),
                 TextSelectorInput(
                   hintText: 'Brand',
                   controller: _brandTextController,
@@ -82,15 +82,15 @@ class _CarEditorModalState extends State<CarEditorModal> {
                     _brandTextController.text = value;
                   },
                 ),
-                SizedBox(height: 16),
+                SizedBox(height: 13),
                 TextSelectorInput(hintText: 'Model'),
-                SizedBox(height: 16),
+                SizedBox(height: 13),
                 TextSelectorInput(
                   hintText: 'Model Year',
                 ),
-                SizedBox(height: 16),
+                SizedBox(height: 13),
                 TextInput(hintText: 'Value (R\$)'),
-                SizedBox(height: 17),
+                SizedBox(height: 24),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
