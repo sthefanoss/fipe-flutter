@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ColouredButton extends StatelessWidget {
-  const ColouredButton({
+class OutlinedButton extends StatelessWidget {
+  const OutlinedButton({
     this.message,
     this.onClick,
     this.color = const Color(0xFF000000),
@@ -14,18 +14,23 @@ class ColouredButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: color,
-      elevation: 1,
+      color: Colors.transparent,
+      elevation: 0,
       type: MaterialType.button,
       borderRadius: BorderRadius.circular(8),
       child: InkWell(
         onTap: onClick,
-        child: Padding(
+        borderRadius: BorderRadius.circular(8),
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border.all(color: color),
+            borderRadius: BorderRadius.circular(8),
+          ),
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           child: Text(
             message,
             style: TextStyle(
-              color: Colors.white,
+              color: color,
               fontSize: 12,
               fontWeight: FontWeight.w400,
             ),

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../resources/resources.dart';
 import '../../widgets/coloured_button.dart';
 import '../../widgets/custom_app_bar.dart';
 import '../../widgets/mob_car_logo.dart';
+import 'widgets/car_editor_modal.dart';
 import 'widgets/car_list_view.dart';
 import 'widgets/menu_button.dart';
 import 'widgets/mobcar_copyright_message.dart';
@@ -58,7 +60,10 @@ class HomeScreen extends StatelessWidget {
               ColouredButton(
                 message: 'Add new',
                 color: Colors.black,
-                onClick: () {},
+                onClick: () => Get.dialog(
+                  CarEditorModal(),
+                  barrierDismissible: false,
+                ),
               )
             ]),
           ),

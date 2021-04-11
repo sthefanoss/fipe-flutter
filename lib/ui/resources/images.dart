@@ -15,8 +15,10 @@ class _JPGs {
 
 class _SVGs {
   const _SVGs();
-  final String car = 'assets/svg/ford_ka.jpg';
+  final String car = 'assets/svg/car.svg';
+  final String close = 'assets/svg/close.svg';
   final String copyrightSymbol = 'assets/svg/copyright_symbol.svg';
+  final String dropdownButton = 'assets/svg/dropdown_button.svg';
   final String menuUnfold = 'assets/svg/menu_unfold.svg';
   final String menuFold = 'assets/svg/menu_fold.svg';
   final String logo = 'assets/svg/mob_car_logo.svg';
